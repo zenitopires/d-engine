@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include "d-engine/core/gfx/VertexBuffer.h"
 #include "d-engine/core/os/window/WindowProperties.h"
 #include "d-engine/core/os/window/Window.h"
+#include "d-engine/core/gfx/VertexBuffer.h"
+// #include "d-engine/core/gfx/VertexBuffer.h"
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
          0.5f, -0.5f   // bottom right vertex
     };
 
-    VertexBuffer *vb = VertexBufferCreate(vertices, sizeof(vertices));
+    VertexBuffer *vb = VertexBuffer_Create(vertices, sizeof(vertices));
 
     while (appRunning)
     {
@@ -26,7 +27,7 @@ int main()
 
     WindowDelete(wd);
 
-    VertexBufferDelete(vb);
+    VertexBuffer_Delete(vb);
 
     return 0;
 }

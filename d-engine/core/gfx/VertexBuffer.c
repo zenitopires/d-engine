@@ -1,7 +1,7 @@
 #include "VertexBuffer.h"
 
 // VertexBufferCreate creates a vertex buffer object with given data and size.
-VertexBuffer* VertexBufferCreate(float* data, uint32_t size) {
+VertexBuffer* VertexBuffer_Create(float* data, uint32_t size) {
     VertexBuffer* vb = malloc(sizeof(VertexBuffer));
     if (!vb) {
         return NULL;
@@ -14,7 +14,7 @@ VertexBuffer* VertexBufferCreate(float* data, uint32_t size) {
 }
 
 // VertexBufferDelete deletes a vertex buffer object.
-void VertexBufferDelete(VertexBuffer* vb) {
+void VertexBuffer_Delete(VertexBuffer* vb) {
     printf("Deleting vertex buffer, id: %d.\n", vb->rendererID);
     if (vb) {
         glDeleteBuffers(1, &vb->rendererID);
