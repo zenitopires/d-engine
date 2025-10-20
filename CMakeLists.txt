@@ -36,6 +36,7 @@ target_sources(d-test PRIVATE
     main.c
     d-engine/core/os/window/WindowProperties.c
     d-engine/core/os/window/Window.c
+    d-engine/core/gfx/VertexBuffer.c
     vendor/glad/src/glad.c
 )
 
