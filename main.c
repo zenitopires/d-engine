@@ -7,9 +7,9 @@
 
 int main()
 {
-    WindowProps wp = WindowPropsCreate("Zen", 1280, 720, true);
-    WindowData* wd = WindowCreate(&wp);
-    InitializeWindow(wd);
+    WindowProps wp = WindowProps_Create("Zen", 1280, 720, true);
+    WindowData* wd = Window_Create(&wp);
+    Window_Initialize(wd);
 
     bool appRunning = true;
 
@@ -34,10 +34,10 @@ int main()
 
     while (appRunning)
     {
-        WindowOnUpdate(wd, &appRunning);
+        Window_OnUpdate(wd, &appRunning);
     }
 
-    WindowDelete(wd);
+    Window_Delete(wd);
     VertexBuffer_Delete(vb);
     IndexBuffer_Delete(ib);
     VertexArrayObject_Delete(vao);

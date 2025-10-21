@@ -7,7 +7,7 @@
 
 bool s_SDLInitialized = false;
 
-WindowData* WindowCreate(WindowProps* windowProperties) {
+WindowData* Window_Create(WindowProps* windowProperties) {
     WindowData* wd = malloc(sizeof(WindowData));
     if (!wd) {
         return NULL;
@@ -21,12 +21,12 @@ WindowData* WindowCreate(WindowProps* windowProperties) {
     return wd;
 }
 
-void WindowDelete(WindowData* wd) {
+void Window_Delete(WindowData* wd) {
     SDL_DestroyWindow(wd->window);
     SDL_Quit();
 }
 
-void InitializeWindow(WindowData* windowData) {
+void Window_Initialize(WindowData* windowData) {
     if (!s_SDLInitialized) {
         int success = SDL_Init(SDL_INIT_VIDEO);
         if (success < 0) {
@@ -77,7 +77,7 @@ void InitializeWindow(WindowData* windowData) {
 	}
 }
 
-void WindowOnUpdate(WindowData* wd, bool* appRunning) {
+void Window_OnUpdate(WindowData* wd, bool* appRunning) {
     SDL_GL_SwapWindow(wd->window);
     while (SDL_PollEvent(&wd->event)) {
        	switch (wd->event.type)

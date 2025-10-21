@@ -13,9 +13,9 @@ typedef struct WindowData {
 	SDL_Event event;
 } WindowData;
 
-WindowData* WindowCreate(WindowProps* windowProperties);
-void WindowDelete(WindowData* windowData);
-void InitializeWindow(WindowData* windowData);
-void WindowOnUpdate(WindowData* wd, bool* appRunning);
+WindowData* Window_Create(WindowProps* windowProperties);
+void Window_Delete(WindowData* windowData);
+void Window_Initialize(WindowData* windowData);
+void Window_OnUpdate(WindowData* wd, bool* appRunning);
 
 #endif
