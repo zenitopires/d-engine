@@ -9,9 +9,9 @@ typedef struct IndexBuffer {
     uint32_t rendererID;
 } IndexBuffer;
 
-IndexBuffer* IndexBuffer_Create(float* data, uint32_t size);
-void IndexBuffer_Delete(IndexBuffer* vb);
-void IndexBuffer_Bind(IndexBuffer* vb);
-void IndexBuffer_Unbind(IndexBuffer* vb);
+IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size);
+void IndexBuffer_Delete(IndexBuffer* ib);
+void IndexBuffer_Bind(IndexBuffer* ib);
+void IndexBuffer_Unbind(IndexBuffer* ib);
 
 #endif

@@ -1,7 +1,8 @@
 #include "IndexBuffer.h"
 
 // IndexBufferCreate creates a Index buffer object with given data and size.
-IndexBuffer* IndexBuffer_Create(float* data, uint32_t size) {
+IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
+    printf("Creating index buffer!\n");
     IndexBuffer* ib = malloc(sizeof(IndexBuffer));
     if (!ib) {
         return NULL;
@@ -9,14 +10,14 @@ IndexBuffer* IndexBuffer_Create(float* data, uint32_t size) {
     glGenBuffers(1, &ib->rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
-    printf("Created Index buffer, id: %d.\n", ib->rendererID);
+    printf("Created index buffer, id: %d!\n", ib->rendererID);
     return ib;
 }
 
 // IndexBufferDelete deletes a Index buffer object.
 void IndexBuffer_Delete(IndexBuffer* ib) {
-    printf("Deleting Index buffer, id: %d.\n", ib->rendererID);
     if (ib) {
+        printf("Deleting Index buffer, id: %d!\n", ib->rendererID);
         glDeleteBuffers(1, &ib->rendererID);
         free(ib);
         printf("Deleted Index buffer!\n");

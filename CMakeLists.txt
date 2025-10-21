@@ -38,6 +38,7 @@ target_sources(d-test PRIVATE
     d-engine/core/os/window/Window.c
     d-engine/core/gfx/VertexBuffer.c
     d-engine/core/gfx/IndexBuffer.c
+    d-engine/core/gfx/VertexArrayObject.c
     vendor/glad/src/glad.c
 )
 
