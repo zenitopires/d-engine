@@ -1,35 +1,55 @@
+#include "log.h"
 #include "IndexBuffer.h"
 
 // IndexBufferCreate creates a Index buffer object with given data and size.
 IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
-    printf("Creating index buffer!\n");
+#ifdef DEBUG
+    log_debug("Entered IndexBuffer_Create");
+    log_debug("Creating index buffer!");
+#endif
     IndexBuffer* ib = malloc(sizeof(IndexBuffer));
     if (!ib) {
+#ifdef DEBUG
+        log_debug("Failed to allocate memory for index buffer!");
+#endif
         return NULL;
     }
     glGenBuffers(1, &ib->rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
-    printf("Created index buffer, id: %d!\n", ib->rendererID);
+#ifdef DEBUG
+    log_debug("Created index buffer, id: %d!", ib->rendererID);
+#endif
     return ib;
 }
 
 // IndexBufferDelete deletes a Index buffer object.
 void IndexBuffer_Delete(IndexBuffer* ib) {
     if (ib) {
-        printf("Deleting Index buffer, id: %d!\n", ib->rendererID);
+#ifdef DEBUG
+        log_debug("Deleting Index buffer, id: %d!", ib->rendererID);
+#endif
         glDeleteBuffers(1, &ib->rendererID);
+#ifdef DEBUG
+        log_debug("Deleted Index buffer, id: %d!", ib->rendererID);
+#endif
         free(ib);
-        printf("Deleted Index buffer!\n");
     }
 }
 
 // IndexBuffer_Bind binds a Index buffer object. The buffer object name is stored in vb->rendererID.
 void IndexBuffer_Bind(IndexBuffer* ib) {
+#ifdef DEBUG
+    log_debug("Entered IndexBuffer_Bind");
+    log_debug("Binding index buffer, id: %d", ib->rendererID);
+#endif
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);
 }
 
 // IndexBuffer_Unbind unbinds a previously bounded Index buffer object.
-void IndexBuffer_Unbind(IndexBuffer* ib) {
+void IndexBuffer_Unbind() {
+#ifdef DEBUG
+    log_debug("Entered IndexBuffer_Unbind");
+#endif
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }

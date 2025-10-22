@@ -12,6 +12,6 @@ typedef struct IndexBuffer {
 IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size);
 void IndexBuffer_Delete(IndexBuffer* ib);
 void IndexBuffer_Bind(IndexBuffer* ib);
-void IndexBuffer_Unbind(IndexBuffer* ib);
+void IndexBuffer_Unbind();
 
 #endif

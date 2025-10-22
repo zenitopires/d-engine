@@ -18,6 +18,6 @@ void VertexBuffer_Delete(VertexBuffer* vb);
 // VertexBuffer_Bind binds a vertex buffer object. The buffer object name is stored in vb->rendererID.
 void VertexBuffer_Bind(VertexBuffer* vb);
 // VertexBuffer_Unbind unbinds a previously bounded vertex buffer object.
-void VertexBuffer_Unbind(VertexBuffer* vb);
+void VertexBuffer_Unbind();
 
 #endif

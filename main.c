@@ -4,6 +4,8 @@
 #include "d-engine/core/os/window/Window.h"
 #include "d-engine/core/gfx/VertexBuffer.h"
 #include "d-engine/core/gfx/VertexArrayObject.h"
+#include "d-engine/core/gfx/Shader.h"
+#include "log.h"
 
 int main()
 {
@@ -25,22 +27,32 @@ int main()
 		1, 2, 3
 	};
 
+	Shader* shaderProgram = Shader_Create("assets/shaders/defaults/vertex.vert",
+	    "assets/shaders/defaults/fragment.frag");
+	Shader_Bind(shaderProgram);
+
 	VertexArrayObject* vao = VertexArrayObject_Create();
 
     VertexBuffer* vb = VertexBuffer_Create(vertices, sizeof(vertices));
     IndexBuffer* ib = IndexBuffer_Create(indices, sizeof(indices));
 
     VertexArrayObject_Attach_Buffers(vb, ib);
+    VertexArrayObject_Attribute();
 
     while (appRunning)
     {
         Window_OnUpdate(wd, &appRunning);
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		VertexArrayObject_Bind(vao);
+		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, 0);
     }
 
     Window_Delete(wd);
     VertexBuffer_Delete(vb);
     IndexBuffer_Delete(ib);
     VertexArrayObject_Delete(vao);
+    Shader_Delete(shaderProgram);
 
     return 0;
 }

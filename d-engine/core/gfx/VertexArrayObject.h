@@ -15,6 +15,6 @@ void VertexArrayObject_Attach_Buffers(VertexBuffer* vb, IndexBuffer* ib);
 void VertexArrayObject_Attribute();
 void VertexArrayObject_Delete(VertexArrayObject* vao);
 void VertexArrayObject_Bind(VertexArrayObject* vao);
-void VertexArrayObject_Unbind(VertexArrayObject* vao);
+void VertexArrayObject_Unbind();
 
 #endif

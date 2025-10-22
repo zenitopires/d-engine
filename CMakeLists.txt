@@ -9,6 +9,7 @@ add_executable(d-test)
 # Include local headers
 target_include_directories(d-test PRIVATE
     vendor/glad/include
+    vendor/log.c/src
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
@@ -39,7 +40,20 @@ target_sources(d-test PRIVATE
     d-engine/core/gfx/VertexBuffer.c
     d-engine/core/gfx/IndexBuffer.c
     d-engine/core/gfx/VertexArrayObject.c
+    d-engine/core/gfx/Shader.c
+    d-engine/core/debug/debug.h
     vendor/glad/src/glad.c
+    vendor/log.c/src/log.c
 )
 
 target_link_libraries(d-test PRIVATE SDL3::SDL3)
+
+add_custom_command(TARGET d-test POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets
+        ${CMAKE_CURRENT_BINARY_DIR}/assets
+)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_definitions(DEBUG)
+endif()
