@@ -1,7 +1,6 @@
 #include "log.h"
 #include "IndexBuffer.h"
 
-// IndexBufferCreate creates a Index buffer object with given data and size.
 IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
 #ifdef DEBUG
     log_debug("Entered IndexBuffer_Create");
@@ -23,7 +22,6 @@ IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
     return ib;
 }
 
-// IndexBufferDelete deletes a Index buffer object.
 void IndexBuffer_Delete(IndexBuffer* ib) {
     if (ib) {
 #ifdef DEBUG
@@ -37,7 +35,6 @@ void IndexBuffer_Delete(IndexBuffer* ib) {
     }
 }
 
-// IndexBuffer_Bind binds a Index buffer object. The buffer object name is stored in vb->rendererID.
 void IndexBuffer_Bind(IndexBuffer* ib) {
 #ifdef DEBUG
     log_debug("Entered IndexBuffer_Bind");
@@ -46,7 +43,6 @@ void IndexBuffer_Bind(IndexBuffer* ib) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);
 }
 
-// IndexBuffer_Unbind unbinds a previously bounded Index buffer object.
 void IndexBuffer_Unbind() {
 #ifdef DEBUG
     log_debug("Entered IndexBuffer_Unbind");

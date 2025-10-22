@@ -44,7 +44,7 @@ void Shader_Unbind() {
     glUseProgram(0);
 }
 
-uint32_t _shaderCreate(const char* shaderSrcPath, enum ShaderType shaderType) {
+uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType) {
     FILE* file = fopen(shaderSrcPath, "rb");
     if (!file) {
         printf("Failed to open shader file: %s\n", shaderSrcPath);

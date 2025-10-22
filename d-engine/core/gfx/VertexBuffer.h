@@ -7,17 +7,19 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+// VertexBuffer represents an OpenGL vertex buffer object.
 typedef struct VertexBuffer {
+    // rendererID is the name of the vertex buffer object.
     uint32_t rendererID;
 } VertexBuffer;
 
-// VertexBufferCreate creates a vertex buffer object with given data and size.
+// VertexBuffer_Create creates a vertex buffer object with the provided data and size.
 VertexBuffer* VertexBuffer_Create(float* data, uint32_t size);
-// VertexBufferDelete deletes a vertex buffer object.
+// VertexBuffer_Delete deletes the provided vertex buffer object.
 void VertexBuffer_Delete(VertexBuffer* vb);
-// VertexBuffer_Bind binds a vertex buffer object. The buffer object name is stored in vb->rendererID.
+// VertexBuffer_Bind binds a vertex buffer object.
 void VertexBuffer_Bind(VertexBuffer* vb);
 // VertexBuffer_Unbind unbinds a previously bounded vertex buffer object.
-void VertexBuffer_Unbind();
+void VertexBuffer_Unbind(void);
 
 #endif
