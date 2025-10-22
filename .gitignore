@@ -6,6 +6,7 @@
 !vendor/
 !README.md
 !.gitignore
+!.gitmodules
 
 d-engine/*
 !d-engine/**

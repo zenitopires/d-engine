@@ -20,7 +20,7 @@ VertexArrayObject* VertexArrayObject_Create() {
     VertexArrayObject* vao = malloc(sizeof(VertexArrayObject));
     if (!vao) {
         log_error("Failed to allocate memory for vertex array object!");
-        return NULL;
+        return nullptr;
     }
     glGenVertexArrays(1, &vao->rendererID);
     glBindVertexArray(vao->rendererID);

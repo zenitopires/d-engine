@@ -14,7 +14,7 @@ VertexBuffer* VertexBuffer_Create(float* data, uint32_t size) {
     VertexBuffer* vb = malloc(sizeof(VertexBuffer));
     if (!vb) {
         log_error("Failed to allocate memory for VertexBuffer!");
-        return NULL;
+        return nullptr;
     }
     glGenBuffers(1, &vb->rendererID);
     glBindBuffer(GL_ARRAY_BUFFER, vb->rendererID);

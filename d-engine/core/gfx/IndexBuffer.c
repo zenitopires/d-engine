@@ -11,7 +11,7 @@ IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
 #ifdef DEBUG
         log_debug("Failed to allocate memory for index buffer!");
 #endif
-        return NULL;
+        return nullptr;
     }
     glGenBuffers(1, &ib->rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);

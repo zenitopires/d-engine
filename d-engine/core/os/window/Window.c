@@ -10,14 +10,14 @@ bool s_SDLInitialized = false;
 WindowData* Window_Create(WindowProps* windowProperties) {
     WindowData* wd = malloc(sizeof(WindowData));
     if (!wd) {
-        return NULL;
+        return nullptr;
     }
     wd->Title = windowProperties->Title;
     wd->width = windowProperties->Width;
     wd->height = windowProperties->Height;
     wd->Vsync = windowProperties->Vsync;
-    wd->window = NULL;
-    wd->context = NULL;
+    wd->window = nullptr;
+    wd->context = nullptr;
     return wd;
 }
 

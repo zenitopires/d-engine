@@ -4,10 +4,13 @@ project(d-engine LANGUAGES C)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Create the executable first
-add_executable(d-test)
+add_executable(app)
+
+set_target_properties(app PROPERTIES C_STANDARD 23)
+set_target_properties(app PROPERTIES C_STANDARD_REQUIRED YES)
 
 # Include local headers
-target_include_directories(d-test PRIVATE
+target_include_directories(app PRIVATE
     vendor/glad/include
     vendor/log.c/src
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -33,7 +36,7 @@ else()
     find_package(SDL3 REQUIRED CONFIG)
 endif()
 
-target_sources(d-test PRIVATE
+target_sources(app PRIVATE
     main.c
     d-engine/core/os/window/WindowProperties.c
     d-engine/core/os/window/Window.c
@@ -46,9 +49,9 @@ target_sources(d-test PRIVATE
     vendor/log.c/src/log.c
 )
 
-target_link_libraries(d-test PRIVATE SDL3::SDL3)
+target_link_libraries(app PRIVATE SDL3::SDL3)
 
-add_custom_command(TARGET d-test POST_BUILD
+add_custom_command(TARGET app POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/assets
         ${CMAKE_CURRENT_BINARY_DIR}/assets
