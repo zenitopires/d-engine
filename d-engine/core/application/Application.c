@@ -1,5 +1,4 @@
 #include "Application.h"
-#include <stdio.h>
 #include "d-engine/core/gfx/IndexBuffer.h"
 #include "d-engine/core/os/window/WindowProperties.h"
 #include "d-engine/core/os/window/Window.h"
@@ -7,18 +6,21 @@
 #include "d-engine/core/gfx/VertexArrayObject.h"
 #include "d-engine/core/gfx/Shader.h"
 #include "d-engine/core/gfx/Renderer.h"
-#include "log.h"
+#include <log.h>
 #include <stdlib.h>
 
 Application* Application_Create() {
+    log_info("Creating application instance!");
     Application* app = malloc(sizeof(Application));
     if (!app) {
+        log_error("Failed to allocate memory for the application!");
         return nullptr;
     }
     return app;
 }
 
 void Application_Run(Application* app) {
+    log_info("Running application!");
     WindowProps wp = WindowProps_Create("Zen", 1280, 720, true);
     WindowData* wd = Window_Create(&wp);
     Window_Initialize(wd);
@@ -58,7 +60,7 @@ void Application_Run(Application* app) {
 		VertexArrayObject_Bind(vao);
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, 0);
     }
-
+    log_info("Exiting application! Cleaning up resources...");
     Window_Delete(wd);
     VertexBuffer_Delete(vb);
     IndexBuffer_Delete(ib);

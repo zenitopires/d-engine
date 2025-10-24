@@ -11,6 +11,6 @@ Renderer* Renderer_Create() {
 }
 
 void Renderer_Clear(vec4 color) {
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(color[0], color[1], color[2], color[3]);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
