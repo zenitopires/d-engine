@@ -1,5 +1,4 @@
-#ifndef VERTEX_BUFFER_H
-#define VERTEX_BUFFER_H
+#pragma once
 
 #include <glad/glad.h>
 
@@ -21,5 +20,3 @@ void VertexBuffer_Delete(VertexBuffer* vb);
 void VertexBuffer_Bind(VertexBuffer* vb);
 // VertexBuffer_Unbind unbinds a previously bounded vertex buffer object.
 void VertexBuffer_Unbind(void);
-
-#endif

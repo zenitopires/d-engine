@@ -1,5 +1,5 @@
-#ifndef INDEX_BUFFER_H
-#define INDEX_BUFFER_H
+#pragma once
+
 #include <glad/glad.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -19,5 +19,3 @@ void IndexBuffer_Delete(IndexBuffer* ib);
 void IndexBuffer_Bind(IndexBuffer* ib);
 // IndexBuffer_Unbind unbinds a previously bounded index buffer object.
 void IndexBuffer_Unbind(void);
-
-#endif

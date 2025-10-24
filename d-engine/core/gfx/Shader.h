@@ -1,5 +1,4 @@
-#ifndef SHADER_H
-#define SHADER_H
+#pragma once
 
 #include <glad/glad.h>
 #include <stdint.h>
@@ -28,5 +27,3 @@ void Shader_Bind(Shader* shader);
 void Shader_Unbind();
 // _shaderCreate is a helper function to open and parse shader files on disk into memory so that they can be used in Shader_Create.
 uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType);
-
-#endif

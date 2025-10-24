@@ -1,5 +1,5 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#pragma once
+
 #include "cglm/cglm.h"
 
 typedef struct Renderer {
@@ -8,5 +8,3 @@ typedef struct Renderer {
 
 Renderer* Renderer_Create();
 void Renderer_Clear(vec4 color);
-
-#endif

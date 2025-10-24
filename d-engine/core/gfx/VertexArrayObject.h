@@ -1,5 +1,5 @@
-#ifndef VERTEX_ARRAY_OBJECT_H
-#define VERTEX_ARRAY_OBJECT_H
+#pragma once
+
 #include "d-engine/core/gfx/IndexBuffer.h"
 #include "d-engine/core/gfx/VertexBuffer.h"
 #include <glad/glad.h>
@@ -24,5 +24,3 @@ void VertexArrayObject_Delete(VertexArrayObject* vao);
 void VertexArrayObject_Bind(VertexArrayObject* vao);
 // VertexArrayObject_Unbind unbinds a previously bounded vertex array object.
 void VertexArrayObject_Unbind();
-
-#endif

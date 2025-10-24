@@ -1,5 +1,5 @@
-#ifndef WINDOW_PROPERTIES_H
-#define WINDOW_PROPERTIES_H
+#pragma once
+
 #include <stdbool.h>
 
 typedef struct WindowProps {
@@ -9,5 +9,3 @@ typedef struct WindowProps {
 } WindowProps;
 
 WindowProps WindowProps_Create(const char* title, unsigned int width, unsigned int height, bool vsync);
-
-#endif

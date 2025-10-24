@@ -1,5 +1,5 @@
-#ifndef DEBUG_H
-#define DEBUG_H
+#pragma once
+
 #include <stdio.h>
 
 void floatArrayToString(const float arr[], size_t count, char *buffer, size_t bufferSize) {
@@ -35,7 +35,3 @@ void intArrayToString(const int arr[], size_t count, char *buffer, size_t buffer
     }
     snprintf(buffer + offset, bufferSize - offset, "]");
 }
-
-
-
-#endif

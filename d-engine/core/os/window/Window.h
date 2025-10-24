@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#pragma once
+
 #include "WindowProperties.h"
 #include <SDL3/SDL.h>
 #include <stdbool.h>
@@ -17,5 +17,3 @@ WindowData* Window_Create(WindowProps* windowProperties);
 void Window_Delete(WindowData* windowData);
 void Window_Initialize(WindowData* windowData);
 void Window_OnUpdate(WindowData* wd, bool* appRunning);
-
-#endif
