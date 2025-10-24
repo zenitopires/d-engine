@@ -26,8 +26,4 @@ cmake --build build
 If all goes well. You should see a blue rectangle drawn on your screen.
 
 # Libraries
-So far I have a few dependencies:
-- `log.c` for logging
-- `cglm` for the math
-- `glad` so that I can easily call OpenGL functions
-- `SDL` for creating windows and handling user input
+Check out the dependencies of the project [here](docs/libraries.md).
