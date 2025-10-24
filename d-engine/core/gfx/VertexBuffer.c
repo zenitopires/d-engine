@@ -5,8 +5,10 @@
 
 VertexBuffer* VertexBuffer_Create(float* data, uint32_t size) {
     debug_msg("Entered VertexBuffer_Create");
+#ifdef DEBUG
     char buf[512];
     floatArrayToString(data, size / sizeof(float), buf, sizeof(buf));
+#endif
     debug_msg("Creating vertex buffer with data=%s, size=%d", buf, size);
     VertexBuffer* vb = malloc(sizeof(VertexBuffer));
     if (!vb) {
