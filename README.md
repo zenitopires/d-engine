@@ -1,6 +1,12 @@
 ## d-engine
 d-engine is going to be a rendering engine written almost purely in C. Why? Because I like the simplicity of C and wanted to try something different than C++ for writing a rendering engine. For this project I'm using [C23](https://en.cppreference.com/w/c/23.html).
 
+# Yet Another Rendering Engine, Why?
+The reason for building another rendering engine despite there being countless others is two-fold
+1. I want to know how game engines/modeling/animation software work and I thought this would be a good way to learn how they at least do the rendering portion of it.
+2. I've always been interested in the graphic backends that have powered games that I grew up playing like Half Life, Portal, DOOM, and Halo, to name a few. I'd get lost in those games, exploring the levels, trying to find easter eggs. I'd like to recreate that feeling.
+
+# How?
 The aim of this project is to first get the engine to a state where I can draw 2D shapes (it can already do this if you run the project), later on... 3D shapes, and all the other bells and whistles that come with a rendering engine such as model loading, lighting, etc.
 
 ## How to Run it
@@ -18,3 +24,10 @@ cmake --build build
 ./build/app
 ```
 If all goes well. You should see a blue rectangle drawn on your screen.
+
+# Libraries
+So far I have a few dependencies:
+- `log.c` for logging
+- `cglm` for the math
+- `glad` so that I can easily call OpenGL functions
+- `SDL` for creating windows and handling user input
