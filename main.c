@@ -5,6 +5,7 @@
 #include "d-engine/core/gfx/VertexBuffer.h"
 #include "d-engine/core/gfx/VertexArrayObject.h"
 #include "d-engine/core/gfx/Shader.h"
+#include "d-engine/core/gfx/Renderer.h"
 #include "log.h"
 
 int main()
@@ -39,11 +40,12 @@ int main()
     VertexArrayObject_Attach_Buffers(vb, ib);
     VertexArrayObject_Attribute();
 
+    vec4 color = {0.2f, 0.3f, 0.3f, 1.0f};
+
     while (appRunning)
     {
         Window_OnUpdate(wd, &appRunning);
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		Renderer_Clear(color);
 		VertexArrayObject_Bind(vao);
 		glDrawElements(GL_TRIANGLES, sizeof(indices), GL_UNSIGNED_INT, 0);
     }
