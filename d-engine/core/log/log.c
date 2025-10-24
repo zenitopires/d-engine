@@ -1,6 +1,4 @@
-#pragma once
-
-#include <stdio.h>
+#include "log.h"
 
 void floatArrayToString(const float arr[], size_t count, char *buffer, size_t bufferSize) {
     size_t offset = 0;

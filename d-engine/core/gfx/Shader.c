@@ -1,19 +1,17 @@
 #include "Shader.h"
-#include <log.h>
+#include "d-engine/core/log/log.h"
 #include <glad/glad.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 Shader* Shader_Create(const char* vertexShaderSrcPath, const char* fragmentShaderSrcPath) {
-#ifdef DEBUG
-    log_debug("Entered Shader_Create");
-#endif
+    debug_msg("Entered Shader_Create");
     uint32_t vertexShader = _shaderCreate(vertexShaderSrcPath, VertexShader);
     uint32_t fragmentShader = _shaderCreate(fragmentShaderSrcPath, FragmentShader);
     Shader* shader = malloc(sizeof(Shader));
     if (!shader) {
-        log_error("Failed to allocate memory for shader!");
+        error_msg("Failed to allocate memory for shader!");
         return nullptr;
     }
     shader->rendererID = glCreateProgram();
@@ -27,49 +25,37 @@ Shader* Shader_Create(const char* vertexShaderSrcPath, const char* fragmentShade
         GLsizei log_length = 0;
         GLchar message[1024];
         glGetProgramInfoLog(shader->rendererID, 1024, &log_length, message);
-        log_error("Error: %s", message);
+        error_msg("Error: %s", message);
     }
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
-#ifdef DEBUG
-    log_debug("Created shader program, id: %d", shader->rendererID);
-#endif
+    debug_msg("Created shader program, id: %d", shader->rendererID);
     return shader;
 }
 
 void Shader_Delete(Shader* shader) {
-#ifdef DEBUG
-    log_debug("Entered Shader_Delete");
-    log_debug("Deleting shader program, id: %d!", shader->rendererID);
-#endif
+    debug_msg("Entered Shader_Delete");
+    debug_msg("Deleting shader program, id: %d!", shader->rendererID);
     glDeleteProgram(shader->rendererID);
-#ifdef DEBUG
-    log_debug("Deleted shader program, id: %d!", shader->rendererID);
-#endif
+    debug_msg("Deleted shader program, id: %d!", shader->rendererID);
     free(shader);
 }
 
 void Shader_Bind(Shader* shader) {
-#ifdef DEBUG
-    log_debug("Entered Shader_Bind");
-    log_debug("Binding shader program, id: %d", shader->rendererID);
-#endif
+    debug_msg("Entered Shader_Bind");
+    debug_msg("Binding shader program, id: %d", shader->rendererID);
     glUseProgram(shader->rendererID);
 }
 
 void Shader_Unbind() {
-#ifdef DEBUG
-    log_debug("Entered Shader_Unbind");
-    log_debug("Unbinding previously binded shader!");
-#endif
+    debug_msg("Entered Shader_Unbind");
+    debug_msg("Unbinding previously binded shader!");
     glUseProgram(0);
 }
 
 uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType) {
-#ifdef DEBUG
-    log_debug("Entered _shaderCreate");
-    log_debug("Attempting to open shader file at %s!", shaderSrcPath);
-#endif
+    debug_msg("Entered _shaderCreate");
+    debug_msg("Attempting to open shader file at %s!", shaderSrcPath);
     FILE* file = fopen(shaderSrcPath, "rb");
     if (!file) {
         log_error("Failed to open shader file: %s", shaderSrcPath);
@@ -112,7 +98,7 @@ uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType) {
 	{
 		glGetShaderInfoLog(shader, 512, nullptr, infoLog);
 		// std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-		log_error("Error: %s", infoLog);
+		error_msg("Error: %s", infoLog);
 		return 0;
 	}
 	return shader;

@@ -1,53 +1,40 @@
 #include "IndexBuffer.h"
-#include <log.h>
+#include "d-engine/core/log/log.h"
 #include <glad/glad.h>
 #include <stdlib.h>
 
 IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
-#ifdef DEBUG
-    log_debug("Entered IndexBuffer_Create");
-    log_debug("Creating index buffer!");
-#endif
+    debug_msg("Entered IndexBuffer_Create");
+    debug_msg("Creating index buffer!");
     IndexBuffer* ib = malloc(sizeof(IndexBuffer));
     if (!ib) {
-#ifdef DEBUG
-        log_debug("Failed to allocate memory for index buffer!");
-#endif
+        debug_msg("Failed to allocate memory for index buffer!");
         return nullptr;
     }
+    ib->size = size;
     glGenBuffers(1, &ib->rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
-#ifdef DEBUG
-    log_debug("Created index buffer, id: %d!", ib->rendererID);
-#endif
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, ib->size, data, GL_STATIC_DRAW);
+    debug_msg("Created index buffer, id: %d!", ib->rendererID);
     return ib;
 }
 
 void IndexBuffer_Delete(IndexBuffer* ib) {
     if (ib) {
-#ifdef DEBUG
-        log_debug("Deleting Index buffer, id: %d!", ib->rendererID);
-#endif
+        debug_msg("Deleting Index buffer, id: %d!", ib->rendererID);
         glDeleteBuffers(1, &ib->rendererID);
-#ifdef DEBUG
-        log_debug("Deleted Index buffer, id: %d!", ib->rendererID);
-#endif
+        debug_msg("Deleted Index buffer, id: %d!", ib->rendererID);
         free(ib);
     }
 }
 
 void IndexBuffer_Bind(IndexBuffer* ib) {
-#ifdef DEBUG
-    log_debug("Entered IndexBuffer_Bind");
-    log_debug("Binding index buffer, id: %d", ib->rendererID);
-#endif
+    debug_msg("Entered IndexBuffer_Bind");
+    debug_msg("Binding index buffer, id: %d", ib->rendererID);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib->rendererID);
 }
 
 void IndexBuffer_Unbind() {
-#ifdef DEBUG
-    log_debug("Entered IndexBuffer_Unbind");
-#endif
+    debug_msg("Entered IndexBuffer_Unbind");
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }

@@ -5,6 +5,7 @@
 typedef struct IndexBuffer {
     // rendererID is the name of the index buffer object.
     uint32_t rendererID;
+    uint32_t size;
 } IndexBuffer;
 
 // IndexBuffer_Create creates an index buffer object with the provided data and size.

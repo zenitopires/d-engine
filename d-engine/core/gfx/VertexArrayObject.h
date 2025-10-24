@@ -8,12 +8,13 @@
 typedef struct VertexArrayObject {
     // rendererID is the name of vertex array object.
     uint32_t rendererID;
+    uint32_t indicesCount;
 } VertexArrayObject;
 
 // VertexArrayObject_Create creates a vertex array object.
 VertexArrayObject* VertexArrayObject_Create();
 // VertexArrayObject_Attach_Buffers attaches a provided vertex buffer object and optionally an index buffer object to a vertex array object.
-void VertexArrayObject_Attach_Buffers(VertexBuffer* vb, IndexBuffer* ib);
+void VertexArrayObject_Attach_Buffers(VertexArrayObject* vao, VertexBuffer* vb, IndexBuffer* ib);
 // VertexArrayObject_Attribute defines the data layout for the vertex array object.
 void VertexArrayObject_Attribute();
 // VertexArrayObject_Delete deletes the provided vertex array object.

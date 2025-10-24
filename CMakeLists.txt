@@ -47,7 +47,7 @@ target_sources(app PRIVATE
     d-engine/core/gfx/Shader.c
     d-engine/core/gfx/Renderer.c
     d-engine/core/application/Application.c
-    d-engine/core/debug/debug.h
+    d-engine/core/log/log.c
     vendor/glad/src/glad.c
     vendor/log.c/src/log.c
 )
