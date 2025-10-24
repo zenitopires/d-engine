@@ -13,6 +13,7 @@ set_target_properties(app PROPERTIES C_STANDARD_REQUIRED YES)
 target_include_directories(app PRIVATE
     vendor/glad/include
     vendor/log.c/src
+    vendor/cglm/include
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
