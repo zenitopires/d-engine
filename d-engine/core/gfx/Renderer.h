@@ -1,5 +1,4 @@
 #pragma once
-
 #include "cglm/cglm.h"
 
 typedef struct Renderer {

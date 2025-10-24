@@ -1,9 +1,5 @@
 #pragma once
-
-#include <glad/glad.h>
-#include <stdio.h>
 #include <stdint.h>
-#include <stdlib.h>
 
 // IndexBuffer represents an OpenGL index buffer object.
 typedef struct IndexBuffer {

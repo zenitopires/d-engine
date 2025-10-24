@@ -1,5 +1,4 @@
 #pragma once
-
 #include "WindowProperties.h"
 #include <SDL3/SDL.h>
 #include <stdbool.h>

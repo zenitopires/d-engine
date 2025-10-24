@@ -1,10 +1,5 @@
 #pragma once
-
-#include <glad/glad.h>
-
-#include <stdio.h>
 #include <stdint.h>
-#include <stdlib.h>
 
 // VertexBuffer represents an OpenGL vertex buffer object.
 typedef struct VertexBuffer {

@@ -1,8 +1,10 @@
-#include "log.h"
 #include "VertexBuffer.h"
 #ifdef DEBUG
 #include "d-engine/core/debug/debug.h"
 #endif
+#include <log.h>
+#include <glad/glad.h>
+#include <stdlib.h>
 
 VertexBuffer* VertexBuffer_Create(float* data, uint32_t size) {
 #ifdef DEBUG

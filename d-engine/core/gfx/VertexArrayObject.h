@@ -1,10 +1,8 @@
 #pragma once
-
 #include "d-engine/core/gfx/IndexBuffer.h"
 #include "d-engine/core/gfx/VertexBuffer.h"
 #include <glad/glad.h>
 #include <stdint.h>
-#include <stdlib.h>
 
 // VertexArrayObject represents an OpenGL vertex array object.
 typedef struct VertexArrayObject {

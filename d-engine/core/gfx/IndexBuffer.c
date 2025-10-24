@@ -1,5 +1,7 @@
-#include "log.h"
 #include "IndexBuffer.h"
+#include <log.h>
+#include <glad/glad.h>
+#include <stdlib.h>
 
 IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
 #ifdef DEBUG

@@ -1,11 +1,8 @@
-#ifndef VERTEX_ARRAY_OBJECT_H
-#define VERTEX_ARRAY_OBJECT_H
 #include "d-engine/core/gfx/IndexBuffer.h"
 #include "d-engine/core/gfx/VertexBuffer.h"
-#include "log.h"
+#include <log.h>
 #include <glad/glad.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct VertexArrayObject {
@@ -83,5 +80,3 @@ void VertexArrayObject_Bind(VertexArrayObject* vao) {
 void VertexArrayObject_Unbind() {
     glBindVertexArray(0);
 }
-
-#endif

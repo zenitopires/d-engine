@@ -1,9 +1,6 @@
 #pragma once
-
 #include <glad/glad.h>
 #include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 // ShaderType represents the different types of shaders you can create in OpenGL.
 typedef enum ShaderType {
