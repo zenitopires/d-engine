@@ -28,7 +28,7 @@ void VertexArrayObject_Attach_Buffers(VertexArrayObject* vao, VertexBuffer* vb, 
         IndexBuffer_Bind(ib);
         vao->indicesCount = ib->size;
     }
-        debug_msg("Attaching vertex buffer to vertex array object.");
+    debug_msg("Attaching vertex buffer to vertex array object.");
     VertexBuffer_Bind(vb);
 }
 
