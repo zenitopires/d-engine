@@ -1,7 +1,6 @@
 #pragma once
-
-#include <log.h>
 #include <stdio.h>
+#include <log.h>
 
 #ifdef DEBUG
     #define debug_msg(msg, ...) log_debug(msg, ##__VA_ARGS__)

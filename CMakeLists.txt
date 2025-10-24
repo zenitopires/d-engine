@@ -43,7 +43,7 @@ target_sources(app PRIVATE
     d-engine/core/os/window/Window.c
     d-engine/core/gfx/VertexBuffer.c
     d-engine/core/gfx/IndexBuffer.c
-    d-engine/core/gfx/VertexArrayObject.c
+    d-engine/core/gfx/VertexArray.c
     d-engine/core/gfx/Shader.c
     d-engine/core/gfx/Renderer.c
     d-engine/core/application/Application.c

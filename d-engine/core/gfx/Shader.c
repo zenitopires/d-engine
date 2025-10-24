@@ -1,9 +1,9 @@
-#include "Shader.h"
-#include "d-engine/core/log/log.h"
-#include <glad/glad.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <glad/glad.h>
+#include "d-engine/core/log/Log.h"
+#include "Shader.h"
 
 Shader* Shader_Create(const char* vertexShaderSrcPath, const char* fragmentShaderSrcPath) {
     debug_msg("Entered Shader_Create");

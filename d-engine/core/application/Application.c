@@ -1,13 +1,13 @@
-#include "Application.h"
+#include <stdlib.h>
 #include "d-engine/core/gfx/IndexBuffer.h"
 #include "d-engine/core/os/window/WindowProperties.h"
 #include "d-engine/core/os/window/Window.h"
 #include "d-engine/core/gfx/VertexBuffer.h"
-#include "d-engine/core/gfx/VertexArrayObject.h"
+#include "d-engine/core/gfx/VertexArray.h"
 #include "d-engine/core/gfx/Shader.h"
 #include "d-engine/core/gfx/Renderer.h"
-#include "d-engine/core/log/log.h"
-#include <stdlib.h>
+#include "d-engine/core/log/Log.h"
+#include "Application.h"
 
 Application* Application_Create() {
     debug_msg("Entering Application_Create");
@@ -44,13 +44,13 @@ void Application_Run(Application* app) {
 	    "assets/shaders/defaults/fragment.frag");
 	Shader_Bind(shaderProgram);
 
-	VertexArrayObject* vao = VertexArrayObject_Create();
+	VertexArray* vao = VertexArray_Create();
 
     VertexBuffer* vb = VertexBuffer_Create(vertices, sizeof(vertices));
     IndexBuffer* ib = IndexBuffer_Create(indices, sizeof(indices));
 
-    VertexArrayObject_Attach_Buffers(vao, vb, ib);
-    VertexArrayObject_Attribute();
+    VertexArray_Attach_Buffers(vao, vb, ib);
+    VertexArray_Attribute();
 
     vec4 color = {0.2f, 0.3f, 0.3f, 1.0f};
 
@@ -64,6 +64,6 @@ void Application_Run(Application* app) {
     Window_Delete(wd);
     VertexBuffer_Delete(vb);
     IndexBuffer_Delete(ib);
-    VertexArrayObject_Delete(vao);
+    VertexArray_Delete(vao);
     Shader_Delete(shaderProgram);
 }

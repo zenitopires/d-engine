@@ -1,9 +1,9 @@
-#include "Renderer.h"
-#include "d-engine/core/gfx/Shader.h"
-#include "d-engine/core/gfx/VertexArrayObject.h"
-#include "d-engine/core/log/log.h"
-#include <glad/glad.h>
 #include <stdlib.h>
+#include <glad/glad.h>
+#include "d-engine/core/gfx/Shader.h"
+#include "d-engine/core/gfx/VertexArray.h"
+#include "d-engine/core/log/Log.h"
+#include "Renderer.h"
 
 Renderer* Renderer_Create() {
     debug_msg("Entered Renderer_Create");
@@ -27,10 +27,10 @@ void Renderer_Clear(vec4 color) {
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Renderer_Draw(VertexArrayObject* vao,  Shader* shader) {
-    VertexArrayObject_Bind(vao);
+void Renderer_Draw(VertexArray* vao,  Shader* shader) {
+    VertexArray_Bind(vao);
     Shader_Bind(shader);
     glDrawElements(GL_TRIANGLES, vao->indicesCount, GL_UNSIGNED_INT, 0);
-    VertexArrayObject_Unbind();
+    VertexArray_Unbind();
     Shader_Unbind();
 }

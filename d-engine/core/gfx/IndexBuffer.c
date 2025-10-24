@@ -1,7 +1,7 @@
-#include "IndexBuffer.h"
-#include "d-engine/core/log/log.h"
-#include <glad/glad.h>
 #include <stdlib.h>
+#include <glad/glad.h>
+#include "d-engine/core/log/Log.h"
+#include "IndexBuffer.h"
 
 IndexBuffer* IndexBuffer_Create(unsigned int* data, uint32_t size) {
     debug_msg("Entered IndexBuffer_Create");

@@ -1,7 +1,7 @@
-#include "VertexBuffer.h"
-#include "d-engine/core/log/log.h"
-#include <glad/glad.h>
 #include <stdlib.h>
+#include <glad/glad.h>
+#include "d-engine/core/log/Log.h"
+#include "VertexBuffer.h"
 
 VertexBuffer* VertexBuffer_Create(float* data, uint32_t size) {
     debug_msg("Entered VertexBuffer_Create");

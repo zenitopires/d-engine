@@ -1,7 +1,7 @@
 #pragma once
-#include "WindowProperties.h"
-#include <SDL3/SDL.h>
 #include <stdbool.h>
+#include <SDL3/SDL.h>
+#include "WindowProperties.h"
 
 typedef struct WindowData {
     const char* Title;
