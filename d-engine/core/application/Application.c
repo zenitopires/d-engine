@@ -25,6 +25,8 @@ void Application_Run(Application* app) {
     WindowData* wd = Window_Create(&wp);
     Window_Initialize(wd);
 
+    Renderer* renderer = Renderer_Create();
+
     bool appRunning = true;
 
     float vertices[] = {

@@ -3,6 +3,8 @@
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_video.h>
 #include <SDL3/SDL.h>
+#include "SDL3/SDL_opengl.h"
+#include "d-engine/core/log/Log.h"
 #include "Window.h"
 
 bool s_SDLInitialized = false;
@@ -89,6 +91,10 @@ void Window_OnUpdate(WindowData* wd, bool* appRunning) {
 			}
 			case SDL_EVENT_WINDOW_RESIZED:
 			{
+			    unsigned int width = wd->event.window.data1;
+				unsigned int height = wd->event.window.data2;
+			    debug_msg("Window resized, width: %d, height: %d", width, height);
+				glViewport(0, 0, width, height);
 				// std::cout << m_Data.Event.window.data1 << " " << m_Data.Event.window.data2 << '\n';
 				break;
 			}
