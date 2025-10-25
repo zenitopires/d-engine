@@ -1,8 +1,7 @@
 #include <stdlib.h>
-#include "d-engine/core/gfx/IndexBuffer.h"
 #include "d-engine/core/os/window/WindowProperties.h"
 #include "d-engine/core/os/window/Window.h"
-#include "d-engine/core/gfx/VertexBuffer.h"
+#include "d-engine/core/gfx/Buffer.h"
 #include "d-engine/core/gfx/VertexArray.h"
 #include "d-engine/core/gfx/Shader.h"
 #include "d-engine/core/gfx/Renderer.h"
@@ -46,8 +45,8 @@ void Application_Run(Application* app) {
 
 	VertexArray* vao = VertexArray_Create();
 
-    VertexBuffer* vb = VertexBuffer_Create(vertices, sizeof(vertices));
-    IndexBuffer* ib = IndexBuffer_Create(indices, sizeof(indices));
+    Buffer* vb = Buffer_Create(GL_ARRAY_BUFFER, vertices, sizeof(vertices));
+    Buffer* ib = Buffer_Create(GL_ELEMENT_ARRAY_BUFFER, indices, sizeof(indices));
 
     VertexArray_Attach_Buffers(vao, vb, ib);
     VertexArray_Attribute();
@@ -62,8 +61,8 @@ void Application_Run(Application* app) {
     }
     log_info("Exiting application! Cleaning up resources...");
     Window_Delete(wd);
-    VertexBuffer_Delete(vb);
-    IndexBuffer_Delete(ib);
+    Buffer_Delete(vb);
+    Buffer_Delete(ib);
     VertexArray_Delete(vao);
     Shader_Delete(shaderProgram);
 }

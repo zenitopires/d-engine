@@ -21,15 +21,15 @@ VertexArray* VertexArray_Create() {
     return vao;
 }
 
-void VertexArray_Attach_Buffers(VertexArray* vao, VertexBuffer* vb, IndexBuffer* ib) {
+void VertexArray_Attach_Buffers(VertexArray* vao, Buffer* vb, Buffer* ib) {
     debug_msg("Entered VertexArray_Attach_Buffers.");
     if (ib) {
     debug_msg("Attaching index buffer to vertex array object.");
-        IndexBuffer_Bind(ib);
+        Buffer_Bind(ib);
         vao->indicesCount = ib->size;
     }
     debug_msg("Attaching vertex buffer to vertex array object.");
-    VertexBuffer_Bind(vb);
+    Buffer_Bind(vb);
 }
 
 void VertexArray_Attribute() {

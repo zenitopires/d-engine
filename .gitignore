@@ -8,6 +8,7 @@
 !.gitignore
 !.gitmodules
 !docs
+!assets
 
 d-engine/*
 !d-engine/**
