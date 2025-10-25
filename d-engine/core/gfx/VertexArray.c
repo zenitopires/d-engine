@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <glad/glad.h>
 #include "d-engine/core/gfx/VertexArray.h"
-#include "d-engine/core/gfx/IndexBuffer.h"
-#include "d-engine/core/gfx/VertexBuffer.h"
 #include "d-engine/core/log/Log.h"
 
 VertexArray* VertexArray_Create() {
