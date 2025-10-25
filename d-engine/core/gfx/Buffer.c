@@ -30,6 +30,7 @@ Buffer* Buffer_Create(unsigned int target, const void* data, uint32_t size) {
     glGenBuffers(1, &buffer->rendererID);
     glBindBuffer(buffer->target, buffer->rendererID);
     glBufferData(buffer->target, buffer->size, data, GL_STATIC_DRAW);
+    glBindBuffer(buffer->target, 0);
     debug_msg("Created buffer, id: %d.", buffer->rendererID);
     return buffer;
 }
