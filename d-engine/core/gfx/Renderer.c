@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <glad/glad.h>
-#include "d-engine/core/gfx/Shader.h"
 #include "d-engine/core/gfx/VertexArray.h"
 #include "d-engine/core/log/Log.h"
 #include "Renderer.h"
@@ -34,10 +33,8 @@ void Renderer_Clear(vec4 color) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer_Draw(VertexArray* vao,  Shader* shader) {
+void Renderer_Draw(VertexArray* vao) {
     VertexArray_Bind(vao);
-    Shader_Bind(shader);
-    glDrawElements(GL_TRIANGLES, vao->indicesCount, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, vao->indexCount, GL_UNSIGNED_INT, 0);
     VertexArray_Unbind();
-    Shader_Unbind();
 }

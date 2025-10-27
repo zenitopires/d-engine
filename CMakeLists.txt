@@ -41,7 +41,6 @@ target_sources(app PRIVATE
     main.c
     d-engine/core/os/window/WindowProperties.c
     d-engine/core/os/window/Window.c
-    d-engine/core/gfx/Buffer.c
     d-engine/core/gfx/VertexArray.c
     d-engine/core/gfx/Shader.c
     d-engine/core/gfx/Renderer.c

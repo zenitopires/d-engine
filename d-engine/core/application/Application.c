@@ -1,9 +1,7 @@
 #include <stdlib.h>
 #include "d-engine/core/os/window/WindowProperties.h"
 #include "d-engine/core/os/window/Window.h"
-#include "d-engine/core/gfx/Buffer.h"
 #include "d-engine/core/gfx/VertexArray.h"
-#include "d-engine/core/gfx/Shader.h"
 #include "d-engine/core/gfx/Renderer.h"
 #include "d-engine/core/log/Log.h"
 #include "Application.h"
@@ -30,28 +28,24 @@ void Application_Run(Application* app) {
     bool appRunning = true;
 
     float vertices[] = {
-			 0.5f,  0.5f, 0.0f,  // top right
-			 0.5f, -0.5f, 0.0f,  // bottom right
-			-0.5f, -0.5f, 0.0f,  // bottom left
-			-0.5f,  0.5f, 0.0f,  // top left
-			 0.3f,  0.2f, 0.25f
-		};
+         0.5f,  0.5f, 0.0f,
+         0.5f, -0.5f, 0.0f,
+        -0.5f, -0.5f, 0.0f,
+        -0.5f,  0.5f, 0.0f
+    };
+
 	unsigned int indices[] = {
 		0, 1, 3,
 		1, 2, 3
 	};
 
-	Shader* shaderProgram = Shader_Create("assets/shaders/defaults/vertex.vert",
-	    "assets/shaders/defaults/fragment.frag");
-	Shader_Bind(shaderProgram);
+	Data* data = malloc(sizeof(Data));
+	data->vertexData = vertices;
+	data->indexData = indices;
+	data->vertexCount = sizeof(vertices) / sizeof(float);
+	data->indexCount = sizeof(indices) / sizeof(unsigned int);
 
-	VertexArray* vao = VertexArray_Create();
-
-    Buffer* vb = Buffer_Create(GL_ARRAY_BUFFER, vertices, sizeof(vertices));
-    Buffer* ib = Buffer_Create(GL_ELEMENT_ARRAY_BUFFER, indices, sizeof(indices));
-
-    VertexArray_Attach_Buffers(vao, vb, ib);
-    VertexArray_Attribute();
+	VertexArray* vao = VertexArray_Create(data);
 
     vec4 color = {0.2f, 0.3f, 0.3f, 1.0f};
 
@@ -59,12 +53,9 @@ void Application_Run(Application* app) {
     {
         Window_OnUpdate(wd, &appRunning);
 		Renderer_Clear(color);
-		Renderer_Draw(vao, shaderProgram);
+		Renderer_Draw(vao);
     }
     log_info("Exiting application! Cleaning up resources...");
     Window_Delete(wd);
-    Buffer_Delete(vb);
-    Buffer_Delete(ib);
     VertexArray_Delete(vao);
-    Shader_Delete(shaderProgram);
 }
