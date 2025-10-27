@@ -47,6 +47,11 @@ void Shader_Unbind() {
     glUseProgram(0);
 }
 
+int Shader_Get_Uniform(unsigned int shader, const char* name) {
+    int location = glGetUniformLocation(shader, name);
+    return location;
+}
+
 uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType) {
     debug_msg("Entered _shaderCreate");
     debug_msg("Attempting to open shader file at %s!", shaderSrcPath);

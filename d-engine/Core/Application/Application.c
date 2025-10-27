@@ -28,10 +28,10 @@ void Application_Run(Application* app) {
     bool appRunning = true;
 
     float vertices[] = {
-         0.5f,  0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f
+         0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+         0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+        -0.5f,  0.5f, 0.0f, 0.5f, 0.5f, 0.5f
     };
 
 	unsigned int indices[] = {
@@ -47,13 +47,18 @@ void Application_Run(Application* app) {
 
 	VertexArray* vao = VertexArray_Create(data);
 
+	Renderable* renderable = malloc(sizeof(Renderable));
+	renderable->vao = vao;
+
+	Renderer_Submit(renderer, vao);
+
     vec4 color = {0.2f, 0.3f, 0.3f, 1.0f};
 
     while (appRunning)
     {
         Window_OnUpdate(wd, &appRunning);
 		Renderer_Clear(color);
-		Renderer_Draw(vao);
+		Renderer_Draw(renderer);
     }
     log_info("Exiting application! Cleaning up resources...");
     Window_Delete(wd);

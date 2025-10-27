@@ -4,6 +4,7 @@
 #include "d-engine/Core/GFX/VertexArray.h"
 #include "d-engine/Core/GFX/Shader.h"
 #include "d-engine/Core/Log/Log.h"
+#include <SDL3/SDL.h>
 
 VertexArray* VertexArray_Create(Data* data) {
     debug_msg("Entered VertexArray_Create");
@@ -28,8 +29,10 @@ VertexArray* VertexArray_Create(Data* data) {
     glBufferData(GL_ARRAY_BUFFER, vao->vertexCount * sizeof(float), (const float*)data->vertexData, GL_STATIC_DRAW);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vao->indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, vao->indexCount * sizeof(unsigned int), (const unsigned int*)data->indexData, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
+    glEnableVertexAttribArray(1);
     debug_msg("Created vertex array object, id: %d!\n", vao->rendererID);
     glBindVertexArray(0);
     glUseProgram(0);

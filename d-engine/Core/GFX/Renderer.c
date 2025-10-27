@@ -16,6 +16,9 @@ Renderer* Renderer_Create() {
     if (!renderer) {
         return nullptr;
     }
+    renderer->capacity = 5;
+    renderer->size = 0;
+    renderer->renderables = malloc(sizeof(Renderable) * renderer->capacity);
     _initRenderer();
     return renderer;
 }
@@ -25,6 +28,9 @@ void Renderer_Delete(Renderer* renderer) {
         error_msg("Cannot delete uninitialized renderer!");
         return;
     }
+    if (renderer->renderables) {
+        free(renderer->renderables);
+    }
     free(renderer);
 }
 
@@ -33,8 +39,20 @@ void Renderer_Clear(vec4 color) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer_Draw(VertexArray* vao) {
-    VertexArray_Bind(vao);
-    glDrawElements(GL_TRIANGLES, vao->indexCount, GL_UNSIGNED_INT, 0);
-    VertexArray_Unbind();
+void Renderer_Draw(Renderer* renderer) {
+    for (int i = 0; i < renderer->size; i++) {
+        VertexArray_Bind(renderer->renderables[i].vao);
+        glDrawElements(GL_TRIANGLES, renderer->renderables[i].vao->indexCount, GL_UNSIGNED_INT, 0);
+        VertexArray_Unbind();
+    }
+}
+
+void Renderer_Submit(Renderer* renderer, VertexArray* vao) {
+    if (renderer->size >= renderer->capacity) {
+        renderer->capacity *= 2;
+        renderer->renderables = realloc(renderer->renderables,
+                                        sizeof(Renderable) * renderer->capacity);
+    }
+    renderer->renderables[renderer->size].vao = vao;
+    renderer->size++;
 }

@@ -16,5 +16,7 @@ void Shader_Delete(unsigned int shader);
 void Shader_Bind(unsigned int shader);
 // Shader_Unbind unbinds (unuse?) the previously binded (used) shader program.
 void Shader_Unbind();
+// Shader_Get_Uniform returns the location of some uniform if it exists, -1 otherwise.
+int Shader_Get_Uniform(unsigned int shader, const char* name);
 // _shaderCreate is a helper function to open and parse shader files on disk into memory so that they can be used in Shader_Create.
 uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType);
