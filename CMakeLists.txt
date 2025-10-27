@@ -39,7 +39,7 @@ endif()
 
 target_sources(app PRIVATE
     main.c
-    d-engine/Core/os/Window/WindowProperties.c
+    d-engine/Core/OS/Window/WindowProperties.c
     d-engine/Core/OS/Window/Window.c
     d-engine/Core/GFX/VertexArray.c
     d-engine/Core/GFX/Shader.c
