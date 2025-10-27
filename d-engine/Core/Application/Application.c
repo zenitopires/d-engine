@@ -47,9 +47,6 @@ void Application_Run(Application* app) {
 
 	VertexArray* vao = VertexArray_Create(data);
 
-	Renderable* renderable = malloc(sizeof(Renderable));
-	renderable->vao = vao;
-
 	Renderer_Submit(renderer, vao);
 
     vec4 color = {0.2f, 0.3f, 0.3f, 1.0f};
