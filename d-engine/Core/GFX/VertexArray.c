@@ -2,15 +2,16 @@
 #include <stdlib.h>
 #include <glad/glad.h>
 #include "d-engine/Core/GFX/VertexArray.h"
+#include "d-engine/Core/GFX/Shader.h"
 #include "d-engine/Core/Log/Log.h"
 
 VertexArray* VertexArray_Create(Data* data) {
     debug_msg("Entered VertexArray_Create");
     debug_msg("Creating vertex array object!\n");
     VertexArray* vao = malloc(sizeof(VertexArray));
-    Shader* shader = Shader_Create("assets/shaders/defaults/vertex.vert",
+    unsigned int shader = Shader_Create("assets/shaders/defaults/vertex.vert",
 	    "assets/shaders/defaults/fragment.frag");
-    vao->shader = shader->rendererID;
+    vao->shader = shader;
     if (!vao) {
         log_error("Failed to allocate memory for vertex array object!");
         return nullptr;

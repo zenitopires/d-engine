@@ -8,18 +8,12 @@ typedef enum ShaderType {
     FragmentShader
 } ShaderType;
 
-// Shader represents an OpenGL shader program.
-typedef struct Shader {
-    // rendererID is the name of the shader program.
-    uint32_t rendererID;
-} Shader;
-
 // Shader_Create creates a shader program given a vertex shader source path and a fragment shader source path.
-Shader* Shader_Create(const char* vertexShaderSrc, const char* fragmentShaderSrc);
+unsigned int Shader_Create(const char* vertexShaderSrc, const char* fragmentShaderSrc);
 // Shader_Delete deletes the provided shader program.
-void Shader_Delete(Shader* shader);
+void Shader_Delete(unsigned int shader);
 // Shader_Bind uses (it's called 'bind' to fit the convention I've got going on) the provided shader program.
-void Shader_Bind(Shader* shader);
+void Shader_Bind(unsigned int shader);
 // Shader_Unbind unbinds (unuse?) the previously binded (used) shader program.
 void Shader_Unbind();
 // _shaderCreate is a helper function to open and parse shader files on disk into memory so that they can be used in Shader_Create.

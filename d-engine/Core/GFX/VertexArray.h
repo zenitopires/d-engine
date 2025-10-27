@@ -1,5 +1,4 @@
 #pragma once
-#include "d-engine/Core/GFX/Shader.h"
 #include <stdint.h>
 #include <glad/glad.h>
 
@@ -9,7 +8,7 @@ typedef struct Data {
     void* indexData;
     uint32_t vertexCount;
     uint32_t indexCount;
-    Shader* shader;
+    uint32_t shader;
 } Data;
 
 // VertexArray represents an OpenGL vertex array object.
@@ -22,7 +21,10 @@ typedef struct VertexArray {
     uint32_t indexBuffer;
     // shader is the name of vertex buffer object.
     uint32_t shader;
-    uint32_t vertexCount, indexCount;
+    // vertexCount is the number of vertices in the vertex data.
+    uint32_t vertexCount;
+    // indexCount is the number of indices in the index data.
+    uint32_t indexCount;
 } VertexArray;
 
 // VertexArray_Create creates a vertex array object.
