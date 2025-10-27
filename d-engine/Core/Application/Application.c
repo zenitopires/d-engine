@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "cglm/mat4.h"
 #include "d-engine/Core/OS/Window/WindowProperties.h"
 #include "d-engine/Core/OS/Window/Window.h"
 #include "d-engine/Core/GFX/VertexArray.h"
@@ -47,7 +48,17 @@ void Application_Run(Application* app) {
 
 	VertexArray* vao = VertexArray_Create(data);
 
-	Renderer_Submit(renderer, vao);
+	mat4 matrix;
+	glm_mat4_identity(matrix);
+
+	vec3 position = {0.5, 0.3, 0.0};
+
+	Renderable* renderable = malloc(sizeof(Renderable));
+	renderable->vao = vao;
+	glm_vec3_copy(position, renderable->position);
+	glm_mat4_copy(matrix, renderable->transform);
+
+	Renderer_Submit(renderer, renderable);
 
     vec4 color = {0.2f, 0.3f, 0.3f, 1.0f};
 

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <glad/glad.h>
+#include "d-engine/Core/GFX/Shader.h"
 #include "d-engine/Core/GFX/VertexArray.h"
 #include "d-engine/Core/Log/Log.h"
 #include "Renderer.h"
@@ -42,17 +43,19 @@ void Renderer_Clear(vec4 color) {
 void Renderer_Draw(Renderer* renderer) {
     for (int i = 0; i < renderer->size; i++) {
         VertexArray_Bind(renderer->renderables[i].vao);
+        glUniformMatrix4fv(Shader_Get_Uniform(renderer->renderables[i].vao->shader, "transform"), 1, GL_FALSE, renderer->renderables[i].transform[0]);
+        glUniform3fv(Shader_Get_Uniform(renderer->renderables[i].vao->shader, "position"), 1, renderer->renderables[i].position);
         glDrawElements(GL_TRIANGLES, renderer->renderables[i].vao->indexCount, GL_UNSIGNED_INT, 0);
         VertexArray_Unbind();
     }
 }
 
-void Renderer_Submit(Renderer* renderer, VertexArray* vao) {
+void Renderer_Submit(Renderer* renderer, Renderable* renderable) {
     if (renderer->size >= renderer->capacity) {
         renderer->capacity *= 2;
         renderer->renderables = realloc(renderer->renderables,
                                         sizeof(Renderable) * renderer->capacity);
     }
-    renderer->renderables[renderer->size].vao = vao;
+    renderer->renderables[renderer->size] = *renderable;
     renderer->size++;
 }
