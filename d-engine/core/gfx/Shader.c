@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glad/glad.h>
-#include "d-engine/core/log/Log.h"
+#include "d-engine/Core/Log/Log.h"
 #include "Shader.h"
 
 Shader* Shader_Create(const char* vertexShaderSrcPath, const char* fragmentShaderSrcPath) {

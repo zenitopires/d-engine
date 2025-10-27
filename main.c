@@ -1,4 +1,4 @@
-#include "d-engine/core/application/Application.h"
+#include "d-engine/Core/Application/Application.h"
 
 int main()
 {

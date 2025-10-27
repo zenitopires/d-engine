@@ -1,5 +1,5 @@
 #pragma once
-#include "d-engine/core/gfx/Shader.h"
+#include "d-engine/Core/GFX/Shader.h"
 #include <stdint.h>
 #include <glad/glad.h>
 

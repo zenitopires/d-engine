@@ -1,9 +1,9 @@
 #include <stdlib.h>
-#include "d-engine/core/os/window/WindowProperties.h"
-#include "d-engine/core/os/window/Window.h"
-#include "d-engine/core/gfx/VertexArray.h"
-#include "d-engine/core/gfx/Renderer.h"
-#include "d-engine/core/log/Log.h"
+#include "d-engine/Core/OS/Window/WindowProperties.h"
+#include "d-engine/Core/OS/Window/Window.h"
+#include "d-engine/Core/GFX/VertexArray.h"
+#include "d-engine/Core/GFX/Renderer.h"
+#include "d-engine/Core/Log/Log.h"
 #include "Application.h"
 
 Application* Application_Create() {

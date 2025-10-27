@@ -1,6 +1,6 @@
 #pragma once
 #include <cglm/cglm.h>
-#include "d-engine/core/gfx/VertexArray.h"
+#include "d-engine/Core/GFX/VertexArray.h"
 
 typedef struct Renderable {
     VertexArray* vao;

@@ -4,7 +4,7 @@
 #include <SDL3/SDL_video.h>
 #include <SDL3/SDL.h>
 #include "SDL3/SDL_opengl.h"
-#include "d-engine/core/log/Log.h"
+#include "d-engine/Core/Log/Log.h"
 #include "Window.h"
 
 bool s_SDLInitialized = false;

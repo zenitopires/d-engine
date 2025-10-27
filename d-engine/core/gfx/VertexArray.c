@@ -1,8 +1,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <glad/glad.h>
-#include "d-engine/core/gfx/VertexArray.h"
-#include "d-engine/core/log/Log.h"
+#include "d-engine/Core/GFX/VertexArray.h"
+#include "d-engine/Core/Log/Log.h"
 
 VertexArray* VertexArray_Create(Data* data) {
     debug_msg("Entered VertexArray_Create");
