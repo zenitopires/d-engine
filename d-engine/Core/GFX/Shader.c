@@ -96,7 +96,6 @@ uint32_t _shaderCreate(const char* shaderSrcPath, ShaderType shaderType) {
 	if (!success)
 	{
 		glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-		// std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
 		error_msg("Error: %s", infoLog);
 		return 0;
 	}

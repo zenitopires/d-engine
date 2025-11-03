@@ -8,7 +8,7 @@
 
 VertexArray* VertexArray_Create(Data* data) {
     debug_msg("Entered VertexArray_Create");
-    debug_msg("Creating vertex array object!\n");
+    debug_msg("Creating vertex array object!");
     VertexArray* vao = malloc(sizeof(VertexArray));
     unsigned int shader = Shader_Create("assets/shaders/defaults/vertex.vert",
 	    "assets/shaders/defaults/fragment.frag");

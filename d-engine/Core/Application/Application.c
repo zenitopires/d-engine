@@ -1,16 +1,20 @@
 #include <stdlib.h>
 #include "cglm/mat4.h"
+#include "d-engine/Core/GFX/Renderer.h"
 #include "d-engine/Core/OS/Window/WindowProperties.h"
 #include "d-engine/Core/OS/Window/Window.h"
 #include "d-engine/Core/GFX/VertexArray.h"
-#include "d-engine/Core/GFX/Renderer.h"
 #include "d-engine/Core/Log/Log.h"
 #include "Application.h"
 
-Application* Application_Create() {
+Application* Application_Create(GameContext* gameContext) {
     debug_msg("Entering Application_Create");
     info_msg("Creating application instance!");
     Application* app = malloc(sizeof(Application));
+    app->gameContext = malloc(sizeof(GameContext));
+    if (gameContext) {
+        app->gameContext = gameContext;
+    }
     if (!app) {
         error_msg("Failed to allocate memory for the application!");
         return nullptr;
@@ -28,25 +32,7 @@ void Application_Run(Application* app) {
 
     bool appRunning = true;
 
-    float vertices[] = {
-         0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-         0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
-        -0.5f,  0.5f, 0.0f, 0.5f, 0.5f, 0.5f
-    };
-
-	unsigned int indices[] = {
-		0, 1, 3,
-		1, 2, 3
-	};
-
-	Data* data = malloc(sizeof(Data));
-	data->vertexData = vertices;
-	data->indexData = indices;
-	data->vertexCount = sizeof(vertices) / sizeof(float);
-	data->indexCount = sizeof(indices) / sizeof(unsigned int);
-
-	VertexArray* vao = VertexArray_Create(data);
+	VertexArray* vao = VertexArray_Create(app->gameContext->objects);
 
 	mat4 matrix;
 	glm_mat4_identity(matrix);
@@ -65,10 +51,13 @@ void Application_Run(Application* app) {
     while (appRunning)
     {
         Window_OnUpdate(wd, &appRunning);
+        if (app->gameContext != nullptr && app->gameContext->OnUpdate != nullptr) {
+            log_debug("Game context is active");
+        }
 		Renderer_Clear(color);
 		Renderer_Draw(renderer);
     }
     log_info("Exiting application! Cleaning up resources...");
     Window_Delete(wd);
-    VertexArray_Delete(vao);
+    // VertexArray_Delete(vao);
 }
